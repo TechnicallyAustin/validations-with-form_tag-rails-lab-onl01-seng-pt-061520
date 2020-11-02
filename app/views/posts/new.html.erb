@@ -1,14 +1,19 @@
-<h1>New Post Form </h1>
+<h2>New Post Form</h2>
+<%= form_tag posts_path, method: "post" do %>
+  <div class="field">
+    <%= label_tag "title", "Title" %>
+    <%= text_field_tag "title" %>
+  </div>
 
-<%= form_for(@post) do |t|%>
-<%= t.label :title%>
-<%= t.text_field :title%>
+  <div class="field">
+    <%= label_tag "category", "Category" %>
+    <%= text_field_tag "category" %>
+  </div>
 
-<%= t.label :category %>
-<%= t.text_field :content%>
+  <div class="field">
+    <%= label_tag "content", "Content" %>
+    <%= text_area_tag "content" %>
+  </div>
 
-<%= t.label :content%>
-<%= t.text_area :content%>
-
-<%= t.submit%>
-
+  <%= submit_tag "Create" %>
+<% end %>
