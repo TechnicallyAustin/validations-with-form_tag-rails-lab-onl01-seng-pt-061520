@@ -1,18 +1,32 @@
+<% if @post.errors.any? %>
+<div id="error_explanation">
+<h2>There were some errors:</h2>
+<ul>
+<% @post.errors.full_messages.each do |message|%>
+<li><%= message %></li>
+<%end%>
+</ul>
+</div>
+<%end%>
+
 <h2>New Post Form</h2>
 <%= form_tag posts_path, method: "post" do %>
   <div class="field">
     <%= label_tag "title", "Title" %>
-    <%= text_field_tag "title" %>
+    <%= text_field_tag "title", @post.title %>
+    <%@post.errors[:title]%>
   </div>
 
   <div class="field">
     <%= label_tag "category", "Category" %>
-    <%= text_field_tag "category" %>
+    <%= text_field_tag "category", @post.category %>
+    <%@post.errors[:title]%>
   </div>
 
   <div class="field">
     <%= label_tag "content", "Content" %>
-    <%= text_area_tag "content" %>
+    <%= text_area_tag "content", @post.content %>
+    <%@post.errors[:title]%>
   </div>
 
   <%= submit_tag "Create" %>

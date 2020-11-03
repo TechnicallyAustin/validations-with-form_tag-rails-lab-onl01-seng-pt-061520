@@ -1,19 +1,33 @@
+<% if @post.errors.any? %>
+<div id="error_explanation">
+<h2>There were some errors:</h2>
+<ul>
+<% @post.errors.full_messages.each do |message|%>
+<li><%= message %></li>
+<%end%>
+</ul>
+</div>
+<%end%>
+
 <h2>Edit an Author</h2>
 <%= form_tag authors_path, method: "post" do %>
   <div class="field">
     <%= label_tag "name", "Name" %>
     <%= text_field_tag "name" %>
+    <%@author.errors[:name]%>
   </div>
 
   <div class="field">
     <%= label_tag "email", "Email" %>
     <%= text_field_tag "email" %>
+    <%@author.errors[:email]%>
   </div>
 
   <div class="field">
     <%= label_tag "phone_number", "Phone Number" %>
     <%= text_field_tag "phone_number" %>
+    <%@author.errors[:phone_number]%>
   </div>
 
-  <%= submit_tag "Update" %>
+  <%= submit_tag "Create" %>
 <% end %>
